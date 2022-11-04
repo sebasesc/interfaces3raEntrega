@@ -1,5 +1,5 @@
 class Ficha{
-    constructor(posX, posY,radius,context, jugador, fill){
+    constructor(posX, posY,radius,context, jugador, fill, img1){
         this.posX = posX;
         this.posY = posY;
         this.radius = radius;
@@ -10,6 +10,8 @@ class Ficha{
         this.resaltadoEstilo = 'black';
         this.isMov = false;
         this.cant = 0;
+        this.jugada = false;
+        this.img1 = img1;
     }
 
     getCant(){
@@ -22,6 +24,7 @@ class Ficha{
     getJugador(){
         return this.jugador;
     }
+
 
     setPos(x,y){
         this.posX = x;
@@ -71,7 +74,15 @@ class Ficha{
         return this.isMov;
     }
     mismoJugador(otroJugador){
-        return this.getJugador() == otroJugador;
+        return this.getJugador().getNombre() == otroJugador;
+    }
+
+    fueJugada(){
+        return this.jugada
+    }
+
+    setJugada(estado){
+        this.jugada = estado;
     }
 
     draw(){
@@ -92,6 +103,7 @@ class Ficha{
         let _x =this.posX - x;
         let _y = this.posY - y;
         return Math.sqrt(_x * _x + _y *_y)< this.radius;
-
+        
     }
+    
 }

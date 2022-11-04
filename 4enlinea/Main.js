@@ -12,15 +12,22 @@ let x = document.querySelector('#numTamanio');
 
 let tamanioTablero = x * 16;
 
-let juego = new Juego(canvas, ctx, canvasWidth, canvasHeight, x);
+let img1 = document.getElementById('img1');
+let jugador1 = new Jugador(true, 'jugador 1')
+let jugador2 = new Jugador(false, 'jugador 2')
+
+let juego = new Juego(canvas, ctx, canvasWidth, canvasHeight, x, jugador1, jugador2,img1);
 
 let color1 = 'red';
+let color2 = '#efe705'; 
 
-let color2 = 'blue';    
+
+
+
 juego.crearTablero();
 
-juego.generarFichas(1,color1)
-juego.generarFichas(2,color2)
+juego.generarFichas(jugador1,color1)
+juego.generarFichas(jugador2,color2)
 
 juego.drawFigure();
 juego.drawFigure();

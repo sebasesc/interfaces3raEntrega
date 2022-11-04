@@ -1,5 +1,5 @@
 class Juego {
-  constructor(canvas, ctx, canvasWidth, canvasHeight, tamanioTablero) {
+  constructor(canvas, ctx, canvasWidth, canvasHeight, tamanioTablero, jugador1, jugador2, img1) {
     this.canvas = canvas;
     this.ctx = ctx;
     this.canvasWidth = canvasWidth;
@@ -10,6 +10,9 @@ class Juego {
     this.lastClicked = null;
     this.isMouseDown = false;
     this.tablero = new Tablero(this.tamanioTablero, this.xEnLinea);
+    this.jugador1 = jugador1;
+    this.jugador2 = jugador2;
+    this.img1 = img1;
   }
 
   getFichasJ1() {
@@ -33,7 +36,7 @@ class Juego {
     );
     let posY = Math.round(Math.random() * this.canvasHeight - 100);
     
-    let ficha = new Ficha((posX + 50), (posY + 50), 40, this.ctx, jugador, color);
+    let ficha = new Ficha((posX + 50), (posY + 50), 40, this.ctx, jugador, color,  this.img1);
     this.fichas.push(ficha);
   }
 
@@ -51,10 +54,12 @@ class Juego {
   clearCanvas() {
     this.ctx.fillStyle = "#FFFFFF";
     this.ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+    this.ctx.fillStyle = 'blue';
+    this.ctx.fillRect(0, 0, 800, 800);
   }
 
   onMouseMove(x, y) {
-    if (this.isMouseDown && this.lastClicked != null) {
+    if (this.isMouseDown && this.lastClicked != null && !this.lastClicked.fueJugada() && this.lastClicked.getJugador().esSuTurno() ) {
       this.lastClicked.setPos(x, y);
       this.lastClicked.setMov(true);
       this.drawFigure();
@@ -68,7 +73,7 @@ class Juego {
   onMouseUp() {
     
     this.isMouseDown = false;
-    if(this.lastClicked != null){
+    if(this.lastClicked != null && !this.lastClicked.fueJugada()){
       this.lastClicked.setResaltado(false);
       let posX = Math.round((this.lastClicked.getPosX() - 50) / 100);
 
@@ -81,6 +86,8 @@ class Juego {
         if(this.tablero.chequearGanador(this.lastClicked)){
           alert('gano jugador :' + this.lastClicked.getJugador());
         }
+        this.jugador1.setTurno(jugador2.esSuTurno());
+        this.jugador2.setTurno(!jugador1.esSuTurno())
       }
     }
 
@@ -96,7 +103,7 @@ class Juego {
     }
     let clickFicha = this.findClickedFigure(x, y);
 
-    if (clickFicha != null) {
+    if (clickFicha != null ) {
       clickFicha.setResaltado(true);
       this.lastClicked = clickFicha;
     }
@@ -111,14 +118,5 @@ class Juego {
       }
     }
   }
-
-eliminarFicha(ficha){
-  for (let i = 0; i < this.fichas.length; i++) {
-    if(i !== null && ficha === this.fichas[i]){
-      console.log("se elimino ficha " + ficha )
-      this.fichas[i] = null;
-    }
-  }
-}
 
 }
