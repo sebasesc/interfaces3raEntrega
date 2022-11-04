@@ -1,0 +1,1238 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  font-family: sans-serif;
+}
+body {
+  background-color: rgb(0, 0, 0);
+
+}
+
+
+/*--------------------------header--------------------------------------------*/
+header nav {
+  width: 100%;
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgb(22, 22, 22);
+}
+
+header nav img {
+  max-width: 150px;
+  padding: 0% 5% 0% 5%;
+}
+
+nav ul {
+  display: flex;
+}
+nav ul li {
+  padding: 5%;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+.stroke a:hover {
+  color: rgb(148, 148, 148);
+}
+
+
+
+/* stroke */
+nav.stroke ul li a,
+nav.fill ul li a {
+  position: relative;
+  color: rgb(255, 255, 255);
+}
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: rgba(0, 116, 228, 1);
+  height: 2px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+.section-icons{
+    display: flex;
+    align-items: center;
+}
+.section-icons figure{
+  padding: 0% 30% 0% 30%;
+}
+
+
+.centrado{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.barra{
+  width:250px;
+  height:10px;
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius:10px;
+  box-shadow: 20px 25px 45px rgba(0,0,0,0.1);
+  }
+  .progreso{
+  width:var(--w);
+  height:100%;
+  background: rgba(0, 116, 228, 1);
+  border-radius: 10px;
+  animation:Aumentar 5s ease;
+  }
+  @keyframes Aumentar {
+  0%{width:0%;}
+  100%{width: var (--w)}
+  }
+
+.userContentHeader{
+  display: flex;
+  align-items: center;
+}
+
+.hidden{
+    overflow: hidden;
+}
+
+.box-search {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(82 82 82 / 0%);
+
+  border-radius: 7px;
+}
+.box-search input {
+  border-radius: 7px;
+  background-color: rgb(250, 250, 250);
+  padding: 0%;
+}
+
+.breadcrum {
+  display: flex;
+  margin-left: 7%;
+}
+
+.breadcrum h5 {
+  padding: 0% 1% 0% 1%;
+  color: white;
+}
+.breadcrum a{
+  padding: 0% 1% 0% 1%;
+}
+
+
+/*--------------------------header--------------------------------------------*/
+
+
+/*--------------------------menu hamburguesa-----------------------------------*/
+
+.menu-hamburguesa{
+    position: fixed;
+    width: 25%;
+    z-index: 2;
+    top: 0;
+    left: 0%;
+    padding: 3% 0% 3% 3%;
+    background-color: rgba(0, 0, 0, 0.76);
+    height: 100vh;
+    opacity: 1;
+}
+
+.content-menu{
+    color: #fff;
+}
+.content-menu li{
+    padding: 4% 5% 4% 6%;
+    color: #d4d4d4;
+}
+
+.menuHeader{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 2%;
+
+}
+
+.btn-menu{
+  background-color: rgba(0, 0, 0, 0.034);
+}
+
+
+.categorias-menu{
+    padding-top: 5%;
+}
+
+.user{
+    display: flex;
+    align-items: flex-end;
+}
+.user img, h3{
+    padding: 0%  0%  0%  0%;
+}
+
+/*--------------------------menu hamburguesa-----------------------------------*/
+
+
+
+
+/*--------------------------banner juego lanzamiento---------------------------*/
+.bannerJuego {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--i);
+  background-size: cover;
+  background-position: center;
+  background-position: top;
+  margin: 7%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8% 5% 8% 5%;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: 0.5s;
+  color: white;
+  border-radius: 10px;
+}
+
+.bannerJuego:hover .content {
+  opacity: 1;
+}
+
+.content h1 h2button {
+  margin: 3%;
+}
+.button {
+  width: 170px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-weight: 600;
+  margin: 3%;
+  cursor: pointer;
+  display: inline-block;
+  
+}
+
+a:link {
+    text-decoration: none;
+  }
+
+.button-1 {
+  background-color: transparent;
+  border: 3px solid #00d7c3;
+  border-radius: 50px;
+  transition: all 0.25s ease-in-out;
+  color: white;
+  
+}
+.button-1 a{
+    color: white;
+}
+
+.button-1:hover {
+  box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
+  border: 3px solid #00d7c3;
+}
+/*--------------------------banner juego lanzamiento---------------------------*/
+
+/*--------------------------carrousel personalizado---------------------------*/
+.carrPersonalizado {
+  display: flex;
+  flex-direction: column;
+  margin: 7%;
+  padding: 4%;
+  background-image: linear-gradient(rgba(9, 49, 88, 1), rgba(2, 91, 178, 0));
+  border-radius: 10px;
+  color: white;
+}
+.card:hover .imgCard{
+  transition: 0.5s;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--i);
+}
+
+section .carrousel {
+  display: flex;
+  align-items: center;
+  padding: 1% 0% 0% 0%;
+}
+section .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-left: 1%;
+  width: 60%;
+}
+
+.btn-juego.fav{
+  width: 150px;
+  background-color: transparent;
+  border: 3px solid #0020d7;
+  border-radius: 12px;
+  transition: all 0.25s ease-in-out;
+
+}
+
+.btn-juego.fav:hover {
+  box-shadow: 0 0 10px 0 #0020d7 inset, 0 0 20px 2px #0020d7;
+  border: 3px solid #0020d7;
+  background-color: #0020d7;
+}
+section .principal{
+  width: 100%;
+}
+
+section .principal img {
+  max-width: 100%;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+section .miniaturas{
+  padding-left: 4%;
+}
+
+section .miniaturas img {
+  max-width: 47%;
+  border-radius: 8px;
+}
+section .barraCarrousel {
+  display: flex;
+  justify-content: center;
+}
+section .barraCarrousel div {
+  display: inline-block;
+  margin: 20px 10px;
+  width: 61px;
+  height: 6px;
+  border-radius: 4px;
+  background-color: hsla(202, 60%, 100%, 0.2);
+}
+.active {
+  transition: 0.3s;
+  opacity: 0.4 !important;
+  box-shadow: 0 5px 5px rgba(1, 23, 46, 0.6);
+}
+/*--------------------------carrousel personalizado---------------------------*/
+
+/*--------------------------carrousel destacados------------------------------*/
+.destacados{
+  color: white;
+}
+.destacados h1{
+  margin: 4% 7% 0% 7%;
+}
+
+
+.carr-destacados {
+  display: flex;
+  margin: 0.5% 7% 3% 7%;
+  padding: 1% 65px 1% 65px;
+  background-color: rgba(38, 38, 38, 1);
+  border-radius: 10px;
+  overflow-x: hidden;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 2%;
+}
+
+.imgCard {
+  width: 290px;
+  height: 366px;
+  background: var(--i);
+  background-size: cover;
+  background-position: center;
+  background-position: top;
+  display: flex;
+  border-radius: 10px 10px 0 0;
+}
+
+.cardContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 10px 10px 0 0;
+}
+.cardContent h4 {
+  color: white;
+}
+
+.icon-plus,
+.icon-heart {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding: 3%;
+}
+
+.icon-plus h4,
+.icon-heart h4 {
+  opacity: 0;
+  padding-right: 5px;
+}
+.icon-heart:hover h4 {
+  opacity: 1;
+}
+.icon-plus:hover h4 {
+  opacity: 1;
+}
+
+.icon-heart:hover .feather-heart {
+  stroke: rgba(251, 120, 0, 1);
+}
+
+.icon-plus:hover .feather-plus-circle {
+  stroke: rgba(0, 116, 228, 1);
+}
+
+.imgCard:hover .cardContent {
+  opacity: 1;
+}
+.carr-destacados .info-juego {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(248, 248, 248);
+  border-radius: 0px 0px 10px 10px;
+  font-size: large;
+  text-align: centerz;
+}
+
+.info-juego h5{
+  color: #bbbbbb;
+}
+
+
+
+.btn-juego{
+  border: 3px solid #05a8a0;
+  border-radius: 14px;
+  font-size: large;
+  padding: 1%;
+  width: 40%;
+  margin: 7%;
+}
+.btn-gratis{
+  border: 3px solid #04db04;
+}
+
+
+
+.btn-gratis:hover {
+  box-shadow: 0 0 10px 0 #04db04 inset, 0 0 20px 2px #04db04;
+  border: 3px solid #04db04;
+}
+
+.carr-destacados .info-juego h4 {
+  padding: 10px;
+}
+
+.card .desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  left: 13px;
+  top: 8px;
+  border-radius: 0px;
+  border-radius: 50px;
+  background-color: #000000 ;
+  border: 3px solid  rgba(0, 116, 228, 1);
+  height: 23px;
+  width: 67px;
+
+  background-color: rgb(0, 0, 0);
+  position: relative;
+}
+
+div.desc.free{
+  border: 3px solid #04db04;
+}
+/*--------------------------carrousel destacados------------------------------*/
+
+/*--------------------------seccion gamepass----------------------------------*/
+.gamePass {
+  display: flex;
+  margin: 7%;
+  background-color: rgba(38, 38, 38, 1);
+  color: white;
+  border-radius: 10px;
+  line-height: 2;
+}
+.gamePass .textInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 6%;
+  text-align: center;
+  
+}
+.textInfo .btn-subs {
+  width: 50%;
+  height: 10%;
+  margin:5%;
+  padding: 0%;
+  border-radius: 8px;
+  font-size: large;
+  background-color: rgba(41, 159, 85, 1);
+}
+.btn-sub{
+  border: 3px solid #05a836;
+  border-radius: 7px;
+  font-size: large;
+}
+ .textInfo h3{
+  text-decoration:underline;
+  color: #ff9100;
+  padding-right: 8%;
+ }
+ .precio{
+  display: flex;
+  align-items:flex-end;
+  color: rgb(189, 189, 189);
+  padding-top: 10px;
+ }
+
+ .precio h4{
+  text-decoration: line-through;
+ }
+
+.btn-sub:hover {
+  box-shadow: 0 0 10px 0 #00d724 inset, 0 0 20px 2px #00d712;
+  border: 3px solid #04ee6d;
+  background-color:#00d724 ;
+  color: black;
+}
+
+.img-sub {
+  display: flex;
+}
+.img-sub div {
+  display: flex;
+  justify-content: center;
+  object-fit: cover;
+}
+
+/* -- */
+.img-sub img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0px 10px 10px 0px;
+  /* filter: blur(1.5px); */
+}
+/*--------------------------seccion gamepass----------------------------------*/
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #585858;
+  border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(2, 32, 167);
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(5, 27, 122);
+}
+
+
+
+/*--------------------------carrouselCategorias-------------------------------*/
+.categorias-carr {
+  margin: 7%;
+  color: white;
+}
+
+.cards {
+  display: flex;
+  background-image: linear-gradient(rgba(9, 49, 88, 1), rgba(2, 91, 178, 0));
+  background-image: top;
+  overflow-x: scroll;
+  border-radius: 10px;
+}
+
+.card-hori {
+  padding: 2%;
+}
+.card-hori h3,
+h5 {
+  padding: 5%;
+}
+.card-hori h5:hover{
+  color: #285ff7;
+  cursor: pointer;
+}
+.card-hori:hover{
+  filter: drop-shadow(16px 16px 20px blue);
+  transition: .3s ease;
+
+
+}
+
+.card-hori img {
+  width: 345px;
+  height: 205px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+/*--------------------------carrouselCategorias-------------------------------*/
+
+/*--------------------------footer--------------------------------------------*/
+footer {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+footer .redes {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(19, 20, 23, 1);
+}
+footer .redes img {
+  padding-left: 50px;
+}
+
+footer .secciones {
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+  background-color: black;
+  color: rgb(221, 221, 221);
+}
+
+.secciones table {
+  table-layout: fixed;
+  width: 80%;
+}
+th {
+  font-size: x-large;
+  color: white;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 20px;
+}
+footer p {
+  text-align: center;
+  color: rgb(190, 190, 190);
+}
+
+.redes figure{
+  padding: 0% 1% 0% 1%;
+}
+
+.redes figure:hover .feather-facebook {
+  stroke: rgba(0, 116, 228, 1);
+  transition: .3s ease-in-out;
+}
+.redes figure:hover .feather-instagram {
+  stroke: rgb(228, 0, 160);
+  transition: .3s  ease-in-out;
+}
+.redes figure:hover .feather-twitter {
+  stroke: rgb(7, 160, 248);
+  transition: .3s  ease-in-out;
+}
+.redes figure:hover .feather-youtube {
+  stroke: rgb(241, 8, 8);
+  transition: .3s  ease-in-out;
+}
+footer a{
+  color: rgb(207, 207, 207);
+}
+
+footer a:hover{
+  color: rgb(10, 32, 233);
+}
+/*--------------------------footer--------------------------------------------*/
+
+
+/*--------------------------paginaCommingSoon--------------------------------------------*/
+.parallax {
+  width: 100%;
+  height: 70%;
+  background: var(--i);
+  background-size: cover;
+  display: flex;
+}
+
+.contFrente {
+  width: 150%;
+  padding: 0% 5% 0% 5%;
+}
+.contFrente {
+  margin: -4px;
+}
+
+.frente {
+  max-width: 100%;
+}
+
+.logo {
+  width: 70%;
+  padding-left: 15%;
+}
+
+.cont-logos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cont-logos h3{
+    color: white;
+}
+
+
+.btn {
+    box-sizing: border-box;
+    background-color: transparent;
+    border-radius: 0.6em;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: .8em 2.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .btn:hover, .btn:focus {
+    color: #fff;
+    outline: 0;
+  }
+  
+
+.callToAction {
+    border-color:#00d7c3;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 0 80px 80px#00d7c3 inset, 0 0 0 0#00d7c3;
+    transition: all 250ms ease-in-out;
+  }
+  .callToAction:hover {
+    box-shadow: 0 0 15px 0 #00d7c3 inset, 0 0 10px 4px #00d7c3;
+  }
+
+
+.features{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 7% 3% 7%;
+  
+}
+.cardFeature{
+    display:flex;
+    align-items: center;
+    margin: 3% 0% 3% 0%;
+    
+}
+.contentFeature{
+    position: absolute;
+    left: 14%;
+}
+
+.imgFeature img{
+    width: 80%;
+    border-radius: 10px;
+}
+.imgFeature{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20%;
+    border-radius: 10px;
+}
+
+
+.info-feature figure img{
+    width: 30%;
+    
+}
+
+.info-feature {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    height: 380px;
+    width: 285px;
+    padding: 11%;
+    background-color: #fff;
+    border-radius: 10px;
+    line-height: 1.5;
+}
+
+
+.right{
+    padding-left: 0%;
+    padding-right: 20%;
+}
+
+.contentFeatureRight{
+    position: absolute;
+    right: 17.5%;
+}
+
+
+/*--------------------------carrouselpj--------------------------------------------*/
+
+.titulo-seccion{
+  color: white;
+}
+
+.titulo-seccion{
+  margin-left: 7%;
+}
+
+.cards-pj{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(19, 20, 23, 1);
+    margin: 1% 7% 5% 7%;
+}
+
+
+.card-pj{
+    height: 620px;
+    width: 243px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), var(--i);
+    background-size: cover;
+    background-position: center;
+    background-position: top;
+    border: 2px solid #00d7c3 ;
+    
+
+}
+
+.card-content{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0%;
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+}
+
+.card-pj:hover .card-content{
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.card-pj:hover {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--i);
+    transition: 0.5s;
+}
+.cont-historia{
+  color: #fff;
+  margin: 7%;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 116, 228, 1) ;
+  padding: 2%;
+  font-size: large;
+  line-height: 2;
+  background-color: #1b1b1b;
+}
+
+.cont-historia p{
+  padding: 2% 2% 2% 0%;
+}
+
+.cont-img-historia img{
+  max-width: 100%;
+  border-radius: 10px;
+  
+
+}
+
+.historia{
+  margin: 7%;
+  color: #fff;
+  text-align: center;
+  
+}
+.historia h1{
+  padding: 2%;
+}
+
+.text-historia{
+  font-size: x-large;
+  padding: 0% 8% 5% 8%;
+  line-height: 2;
+}
+
+/*--------------------------4enlinea--------------------------------------------*/
+
+section.fourenlinea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content:center;
+    margin: 3% 7% 7% 7%;
+    padding:4%;
+    background-color: rgb(22, 23, 85);
+    border-radius: 10px;
+    color: white;
+}
+.fourenlinea h1{
+    text-align: center;
+}
+section.carr-imgmini{
+    display: flex;
+    margin: 7%;
+    overflow-x: scroll;
+}
+.cardmini{
+    border-radius: 10px;
+    padding: 0.5%;
+}
+.cardmini img{
+    width: 400px;
+    height: 226px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.juego img {
+    width: 1153px;
+    height:657px;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+.comojugar {
+    margin: 7%;
+    color: #fff;
+    border-radius: 10px;
+    font-size: large;
+    line-height: 2;
+ }
+
+ .comojugar h4{
+    padding-bottom: 2%;
+    
+ }
+
+ .controles{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(61, 61, 61);
+    margin: 7%;
+    border-radius: 10px;
+ }
+
+ .controles img{
+     height: 150px;
+ }
+
+ .contControl{
+    color: #fff;
+    text-align: center;
+    background-color:rgb(49, 49, 49) ;
+    width: 400px;
+    border-radius: 10px;
+    padding: 2%;
+    margin: 1%;
+    font-size: x-large;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.349);
+ }
+
+
+ .comentarios{
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-size: x-large;
+    margin: 7%;
+    background-color: rgb(61, 61, 61);
+    padding: 4%;
+    border-radius: 8px;
+ }
+
+ 
+ .comentarios img{
+    width: 60px;
+ }
+.contain{
+    display: flex;
+    flex-direction: column;
+ }
+
+ .comentarios label, input{
+    padding:1%;
+    border-radius: 10px;
+    font-size: x-large;
+ }
+ .comment{
+  background-color: #ffffff;
+  border-radius: 8px;
+  color: #3d3d3d;
+  font-weight: lighter;
+  padding: 1%;
+ }
+
+ .contLabelIcon{
+    display: flex;
+    align-items: center;
+ }
+ .contain.arriba{
+    padding-bottom: 3.5%;
+    border-bottom: 1px solid #e7e7e7 ;
+ }
+
+ .contain.abajo{
+    padding-top: 3.5%;
+ }
+
+
+ .cont-equipos{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    
+ }
+
+ .cont-equipos img{
+    max-width: 400px;
+    border-radius: 10px;
+ }
+
+ .equipo{
+    padding: 8% 2% 8% 2%;
+    border-radius: 10px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--i);
+    background-size: cover;
+    background-position: center;
+    background-position: top;
+    width: 100%;
+    margin: 2%;
+ }
+
+ .equipo h2{
+    padding-bottom: 2%;
+ }
+
+
+/*-----------------------------4enlinea--------------------------------------------*/
+
+
+/*-----------------------------Loader Animado--------------------------------------*/
+ .lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-roller div {
+    animation: lds-roller 1.66s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    margin: -4px 0 0 -4px;
+  }
+  .lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+/*-----------------------------Loader Animado--------------------------------------*/
+
+
+/*-----------------------------media querys--------------------------------------*/
+
+
+  @media (max-width: 670px){
+
+    section .carrousel{
+      flex-direction: column;
+    }
+
+    section .info {
+      width: 80%;
+  }
+
+  .img-sub  :nth-child(even) img{
+    display: none;
+  }
+
+  .gamePass {
+    flex-direction: column;
+    border-radius: 10px;
+  }
+  }
+
+ 
+
+  @media (max-width: 1500px){
+    .icon-hidden{
+      display: none;
+    }
+
+    .section-icons{
+      display: none;
+    }
+  }
+
+  @media (max-width: 800px){
+    .ocultar{
+      display: none;
+    }
+    table th{
+      font-size:medium;
+    }
+    table td{
+      font-size: small;
+      padding: 10px;
+    }
+
+    footer p {
+      font-size: x-small;
+    }
+    .box-search {
+      max-width: 50%;
+    }
+    .box-search input{
+      max-width: 100%;
+    }
+  }
+
+
+
+  @media (max-width: 1200px){
+    .sections-icons{
+      display: none;
+    }
+  }
+
+
+  canvas{
+    background-color: #3b3b3b;
+  }
+
+
+
