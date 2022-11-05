@@ -1,5 +1,6 @@
 class Juego {
   constructor(
+<<<<<<< HEAD
     canvas, ctx, xLinea
   ) {
     this.canvas = canvas;
@@ -10,6 +11,23 @@ class Juego {
     this.canvas.height = (this.xEnLinea + 4) * 100;
     this.canvasWidth = canvas.width;
     this.canvasHeight = canvas.height;
+=======
+    canvas,
+    ctx,
+    canvasWidth,
+    canvasHeight,
+    tamanioTablero,
+    xEnLinea,
+    jugador1,
+    jugador2
+  ) {
+    this.canvas = canvas;
+    this.ctx = ctx;
+    this.canvasWidth = canvasWidth;
+    this.canvasHeight = canvasHeight;
+    this.tamanioTablero = tamanioTablero; // revisar
+    this.xEnLinea = xEnLinea;
+>>>>>>> d58cf58f5d2f7337f8c6a08e243ca298d04e7e33
     this.fichas = new Array();
     this.lastClicked = null;
     this.isMouseDown = false;

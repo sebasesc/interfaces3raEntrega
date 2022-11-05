@@ -21,12 +21,22 @@ function iniciarJuego() {
   temporizadorDeRetraso();
 }
 
+<<<<<<< HEAD
 function finalizarJuego() {
   canvas.removeEventListener('mousedown', onMouseDown, false)
   alert("finalizo el juego");
   clearInterval(interval);
 }
 
+=======
+let xLinea = xEnLinea();
+console.log(xLinea);
+
+let juego = new Juego(canvas, ctx, canvasWidth, canvasHeight,7, xLinea, jugador1, jugador2);
+juego.crearTablero();
+juego.generarFichas(jugador1,img1)
+juego.generarFichas(jugador2,img2)
+>>>>>>> d58cf58f5d2f7337f8c6a08e243ca298d04e7e33
 
 //capturar eventos
 function onMouseDown(e) {

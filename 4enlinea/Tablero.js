@@ -1,5 +1,10 @@
 class Tablero {
+<<<<<<< HEAD
   constructor(xEnLinea) {
+=======
+  constructor(tamanioTablero, xEnLinea) {
+    this.tablero = new Array(tamanioTablero);
+>>>>>>> d58cf58f5d2f7337f8c6a08e243ca298d04e7e33
     this.xEnLinea = xEnLinea; // pasar por constructor
     this.cantFilas = xEnLinea + 4;
     this.tablero = new Array(xEnLinea + 4);
@@ -96,7 +101,10 @@ class Tablero {
     return estado;
   }
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> d58cf58f5d2f7337f8c6a08e243ca298d04e7e33
   ganoDiagonal(ficha) {//se detecta error, no define ganador diagonal en el caso de poner ficha en la esquina
     
     //algoritmo para busqueda en diagonal
@@ -166,8 +174,13 @@ class Tablero {
   }
 
   crearArray(canvas, ctx) {
+<<<<<<< HEAD
     for (var i = 0; i < this.xEnLinea + 4; i++) {
       this.tablero[i] = new Array(this.xEnLinea + 4);
+=======
+    for (var i = 0; i < this.cantFilas; i++) {
+      this.tablero[i] = new Array(this.cantFilas);
+>>>>>>> d58cf58f5d2f7337f8c6a08e243ca298d04e7e33
     }
     this.inicializarTablero(canvas, ctx);
   }
