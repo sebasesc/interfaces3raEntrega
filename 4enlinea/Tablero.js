@@ -1,6 +1,6 @@
 class Tablero {
   constructor(tamanioTablero, xEnLinea) {
-    this.tablero = new Array(8);
+    this.tablero = new Array(tamanioTablero);
     this.xEnLinea = xEnLinea; // pasar por constructor
     this.cantFilas = tamanioTablero;
   }
@@ -162,8 +162,8 @@ class Tablero {
   }
 
   crearArray(canvas, ctx) {
-    for (var i = 0; i < 8; i++) {
-      this.tablero[i] = new Array(8);
+    for (var i = 0; i < this.cantFilas; i++) {
+      this.tablero[i] = new Array(this.cantFilas);
     }
     this.inicializarTablero(canvas, ctx);
   }

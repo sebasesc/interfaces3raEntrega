@@ -15,8 +15,9 @@ let jugador1 = new Jugador(true, 'jugador 1')
 let jugador2 = new Jugador(false, 'jugador 2')
 
 let xLinea = xEnLinea();
+console.log(xLinea);
 
-let juego = new Juego(canvas, ctx, canvasWidth, canvasHeight, xLinea, jugador1, jugador2);
+let juego = new Juego(canvas, ctx, canvasWidth, canvasHeight,7, xLinea, jugador1, jugador2);
 juego.crearTablero();
 juego.generarFichas(jugador1,img1)
 juego.generarFichas(jugador2,img2)

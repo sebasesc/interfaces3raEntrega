@@ -5,6 +5,7 @@ class Juego {
     canvasWidth,
     canvasHeight,
     tamanioTablero,
+    xEnLinea,
     jugador1,
     jugador2
   ) {
@@ -12,8 +13,8 @@ class Juego {
     this.ctx = ctx;
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
-    this.tamanioTablero = 8; // revisar
-    this.xEnLinea = 4;
+    this.tamanioTablero = tamanioTablero; // revisar
+    this.xEnLinea = xEnLinea;
     this.fichas = new Array();
     this.lastClicked = null;
     this.isMouseDown = false;
