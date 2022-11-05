@@ -8,17 +8,15 @@ let canvasWidth = canvas.width;
 
 let canvasHeight = canvas.height;
 
-let x = document.querySelector('#numTamanio');
-
-let tamanioTablero = x * 16;
-
 let img1 = document.getElementById('img1');
 let img2 = document.getElementById('img2');
 
 let jugador1 = new Jugador(true, 'jugador 1')
 let jugador2 = new Jugador(false, 'jugador 2')
 
-let juego = new Juego(canvas, ctx, canvasWidth, canvasHeight, x, jugador1, jugador2);
+let xLinea = xEnLinea();
+
+let juego = new Juego(canvas, ctx, canvasWidth, canvasHeight, xLinea, jugador1, jugador2);
 juego.crearTablero();
 juego.generarFichas(jugador1,img1)
 juego.generarFichas(jugador2,img2)
@@ -109,8 +107,14 @@ btnIniciar.addEventListener('click', reiniciarJuego); //);
 
 let interval = setInterval(cargarSegundo,1000);
 
+function xEnLinea(){
+    let xEnLinea = document.querySelector('#selectXenlinea').value;
+    console.log(parseInt(xEnLinea)) 
+    return parseInt(xEnLinea);
+}
 
-
+let bntSelect = document.querySelector('#btnSelect')
+bntSelect.addEventListener('click', xEnLinea);
 
 
 
