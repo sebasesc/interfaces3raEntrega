@@ -96,15 +96,15 @@ class Tablero {
     return estado;
   }
 
-  ganoDiagonal(ficha) {
+  ganoDiagonal(ficha) {//se detecta error, no define ganador diagonal en el caso de poner ficha en la esquina
     let col = parseInt(ficha.getPosX() / 100);
     let fil = parseInt(ficha.getPosY() / 100);
     let jugador = ficha.getJugador().getNombre();
 
-    let i = col - this.xEnLinea;
-    let j = fil - this.xEnLinea;
+    let i = col - this.xEnLinea + 1;
+    let j = fil - this.xEnLinea + 1;///////////////////modificacion
 
-    while (i < col && j < fil) {
+    while (i <= col && j <= fil) {
       i++;
       j++;
       let index = 0;
@@ -112,8 +112,8 @@ class Tablero {
         i >= 0 &&
         j >= 0 &&
         index < this.xEnLinea &&
-        j + index < this.cantFilas - 1 &&
-        i + index < this.cantFilas - 1 &&
+        j + index < this.cantFilas  &&/////retire un (-1)
+        i + index < this.cantFilas  &&///////// (-1)
         this.tablero[j + index][i + index].noEstaVacio() &&
         this.tablero[j + index][i + index].jugadorIgual(jugador)
       ) {
