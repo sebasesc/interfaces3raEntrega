@@ -97,6 +97,8 @@ class Tablero {
   }
 
   ganoDiagonal(ficha) {//se detecta error, no define ganador diagonal en el caso de poner ficha en la esquina
+    
+    //algoritmo para busqueda en diagonal
     let col = parseInt(ficha.getPosX() / 100);
     let fil = parseInt(ficha.getPosY() / 100);
     let jugador = ficha.getJugador().getNombre();
@@ -123,21 +125,22 @@ class Tablero {
         }
       }
     }
-    i = col + this.xEnLinea;
-    j = fil - this.xEnLinea;
+    //algoritmo para busqueda "antidiagonal"
+    i = col + this.xEnLinea - 1;
+    j = fil - this.xEnLinea + 1;
 
-    while (i > col && j < fil) {
+    while (i >= col && j <= fil) {
       i--;
       j++;
       let index = 0;
       while (
-        i < this.cantFilas &&
-        j >= 0 &&
-        index < this.xEnLinea &&
-        j + index < this.cantFilas - 1 &&
-        i - index > 0 &&
-        this.tablero[j + index][i - index].estaOcupado() &&
-        this.tablero[j + index][i - index].jugadorIgual(jugador)
+        i < this.cantFilas &&//salir del tablero hacia derecha
+        j >= 0 &&// salir del tablero  hacia arriba
+        index < this.xEnLinea &&//si llegue a XenLinea
+        j + index <= this.cantFilas - 1 &&//salir del tablero hacia abajo
+        i - index >= 0 &&//salir del tablero hacia la izquierda
+        this.tablero[j + index][i - index].estaOcupado() &&//pregunto si hay ficha en el casillero
+        this.tablero[j + index][i - index].jugadorIgual(jugador)//comparo la ficha
       ) {
         index++;
         if (index == this.xEnLinea) {
