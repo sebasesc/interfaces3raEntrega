@@ -8,11 +8,19 @@
   font-family: sans-serif;
 }
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(14, 14, 14);
 
 }
 
+canvas{
+  background-image: url(/imagenes/fondo4enlinea.png)
+}
 
+.info-partida{
+  display: flex;
+  
+  background-color: #3b3b3b;
+}
 /*--------------------------header--------------------------------------------*/
 header nav {
   width: 100%;

@@ -1,8 +1,8 @@
 class Tablero {
-  constructor(tamanioTablero, xEnLinea) {
-    this.tablero = new Array(8);
+  constructor(xEnLinea) {
     this.xEnLinea = xEnLinea; // pasar por constructor
-    this.cantFilas = tamanioTablero;
+    this.cantFilas = xEnLinea + 4;
+    this.tablero = new Array(xEnLinea + 4);
   }
 
   addFicha(columna, ficha) {
@@ -96,15 +96,18 @@ class Tablero {
     return estado;
   }
 
-  ganoDiagonal(ficha) {
+  
+  ganoDiagonal(ficha) {//se detecta error, no define ganador diagonal en el caso de poner ficha en la esquina
+    
+    //algoritmo para busqueda en diagonal
     let col = parseInt(ficha.getPosX() / 100);
     let fil = parseInt(ficha.getPosY() / 100);
     let jugador = ficha.getJugador().getNombre();
 
-    let i = col - this.xEnLinea;
-    let j = fil - this.xEnLinea;
+    let i = col - this.xEnLinea + 1;
+    let j = fil - this.xEnLinea + 1;///////////////////modificacion
 
-    while (i < col && j < fil) {
+    while (i <= col && j <= fil) {
       i++;
       j++;
       let index = 0;
@@ -112,8 +115,8 @@ class Tablero {
         i >= 0 &&
         j >= 0 &&
         index < this.xEnLinea &&
-        j + index < this.cantFilas - 1 &&
-        i + index < this.cantFilas - 1 &&
+        j + index < this.cantFilas  &&/////retire un (-1)
+        i + index < this.cantFilas  &&///////// (-1)
         this.tablero[j + index][i + index].noEstaVacio() &&
         this.tablero[j + index][i + index].jugadorIgual(jugador)
       ) {
@@ -123,21 +126,22 @@ class Tablero {
         }
       }
     }
-    i = col + this.xEnLinea;
-    j = fil - this.xEnLinea;
+    //algoritmo para busqueda "antidiagonal"
+    i = col + this.xEnLinea - 1;
+    j = fil - this.xEnLinea + 1;
 
-    while (i > col && j < fil) {
+    while (i >= col && j <= fil) {
       i--;
       j++;
       let index = 0;
       while (
-        i < this.cantFilas &&
-        j >= 0 &&
-        index < this.xEnLinea &&
-        j + index < this.cantFilas - 1 &&
-        i - index > 0 &&
-        this.tablero[j + index][i - index].estaOcupado() &&
-        this.tablero[j + index][i - index].jugadorIgual(jugador)
+        i < this.cantFilas &&//salir del tablero hacia derecha
+        j >= 0 &&// salir del tablero  hacia arriba
+        index < this.xEnLinea &&//si llegue a XenLinea
+        j + index <= this.cantFilas - 1 &&//salir del tablero hacia abajo
+        i - index >= 0 &&//salir del tablero hacia la izquierda
+        this.tablero[j + index][i - index].estaOcupado() &&//pregunto si hay ficha en el casillero
+        this.tablero[j + index][i - index].jugadorIgual(jugador)//comparo la ficha
       ) {
         index++;
         if (index == this.xEnLinea) {
@@ -147,6 +151,9 @@ class Tablero {
     }
     return false;
   }
+
+
+  
 
   drawTablero() {
     for (let x = 0; x < this.tablero.length; x++) {
@@ -159,8 +166,8 @@ class Tablero {
   }
 
   crearArray(canvas, ctx) {
-    for (var i = 0; i < 8; i++) {
-      this.tablero[i] = new Array(8);
+    for (var i = 0; i < this.xEnLinea + 4; i++) {
+      this.tablero[i] = new Array(this.xEnLinea + 4);
     }
     this.inicializarTablero(canvas, ctx);
   }
