@@ -1,17 +1,16 @@
 class Ficha{
-    constructor(posX, posY,radius,context, jugador, fill, img1){
+    constructor(posX, posY,radius,context, jugador,img){
         this.posX = posX;
         this.posY = posY;
         this.radius = radius;
         this.ctx = context;
         this.jugador = jugador;
-        this.fill = fill;
         this.isResaltado = false;
         this.resaltadoEstilo = 'black';
         this.isMov = false;
         this.cant = 0;
         this.jugada = false;
-        this.img1 = img1;
+        this.img = img;
     }
 
     getCant(){
@@ -86,6 +85,11 @@ class Ficha{
     }
 
     draw(){
+
+        let y = this.posY - this.radius;
+        let x = this.posX - this.radius;
+        this.ctx.drawImage(this.img, x, y, 80, 80);
+        /*
         this.ctx.fillStyle = this.fill;
         this.ctx.beginPath();
         this.ctx.lineWidth = 3;
@@ -97,7 +101,10 @@ class Ficha{
             this.ctx.stroke();
         }
         this.ctx.closePath();
+        */
     }
+
+
 
     isPointInside(x, y){
         let _x =this.posX - x;

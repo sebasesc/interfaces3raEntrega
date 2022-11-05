@@ -14,7 +14,6 @@ class Tablero {
         !this.tablero[index][col].estaOcupado() &&
         !this.tablero[index + 1][col].estaOcupado()
       ) {
-       // console.log("avanzar " + index);
       }
       // si el que sigue esta ocupado y el que estoy esta libre asigno la ficha al que estoy (index)
       if (
@@ -26,7 +25,7 @@ class Tablero {
         let posX = col * 100;
         let posY = index * 100;
         ficha.setPos(posX + 50, posY + 50);
-        ficha.setJugada(true)
+        ficha.setJugada(true);
       }
       // si llego al final y esa posicion no esta ocupada
       if (
@@ -38,13 +37,12 @@ class Tablero {
         let posX = col * 100;
         let posY = (index + 1) * 100;
         ficha.setPos(posX + 50, posY + 50);
-        ficha.setJugada(true)
+        ficha.setJugada(true);
       }
     }
 
     this.drawTablero();
   }
-
   chequearGanador(ficha) {
     if (this.ganoVertical(ficha)) {
       return true;
@@ -60,51 +58,41 @@ class Tablero {
     }
   }
 
-
-   ganoVertical(ficha) {
+  ganoVertical(ficha) {
     let col = parseInt(ficha.getPosX() / 100);
     let fil = parseInt(ficha.getPosY() / 100);
-    console.log('chequear vertical');
     let jugador = ficha.getJugador().getNombre();
-
-    if (fil + this.xEnLinea <= this.cantFilas)//sentencia que evita que nos salgamos del tablero chequeando si hay ganador vertical
-     {
+    //sentencia que evita que nos salgamos del tablero chequeando si hay ganador vertical
+    if (fil + this.xEnLinea <= this.cantFilas) {
       for (let i = 0; i < this.xEnLinea; i++) {
         if (!this.tablero[fil + i][col].jugadorIgual(jugador)) {
-          console.log("no son todas las fichas iguales");
           return false;
         }
       }
-      console.log("true");
       return true;
     }
-    //console.log("false faltan filas necesarias para ganar vertical");
     return false;
   }
 
   ganoHorizontal(ficha) {
-    //let col = parseInt(ficha.getPosX() / 100);
     let fil = parseInt(ficha.getPosY() / 100);
     let jugador = ficha.getJugador().getNombre();
     let estado = false;
 
-    for (let i = 0; i < this.cantFilas - this.xEnLinea; i++) {
+    for (let i = 0; i <= this.cantFilas - this.xEnLinea; i++) {
       let j = 0;
-      while (//pregunto si el casillero esta ocupado y si el contenido es igual al de la ultima ficha colocada
-        //this.tablero[fil][i + j].getFicha() != null &&
-        this.tablero[fil][i + j].estaOcupado() &&
+      //pregunto si el casillero esta ocupado y si el contenido es igual al de la ultima ficha colocada
+      while (
+        this.tablero[fil][i + j].noEstaVacio() &&
         this.tablero[fil][i + j].jugadorIgual(jugador)
       ) {
-        j++;//si las condiciones anteriores se cumple, incremento J, luego checkeo que J sea el nro "X en linea"
-        //console.log(j);
-        //console.log(i);
+        j++; //si las condiciones anteriores se cumple, incremento J, luego checkeo que J sea el nro "X en linea"
         if (j == this.xEnLinea) {
           estado = true;
-          console.log(estado);
+          return estado;
         }
       }
     }
-    //console.log("return " + estado);
     return estado;
   }
 
@@ -113,79 +101,56 @@ class Tablero {
     let fil = parseInt(ficha.getPosY() / 100);
     let jugador = ficha.getJugador().getNombre();
 
-
-    let i = col - this.xEnLinea ;
+    let i = col - this.xEnLinea;
     let j = fil - this.xEnLinea;
 
-     while (i < col && j < fil) {
+    while (i < col && j < fil) {
       i++;
       j++;
-     // console.log('fil: '+ j + ' col: '+ i );
       let index = 0;
-     // console.log('index:'+ index);
       while (
         i >= 0 &&
         j >= 0 &&
         index < this.xEnLinea &&
-        j + index < this.cantFilas -1 &&
-        i + index < this.cantFilas -1 &&
-        //this.tablero[j + index][i + index].noEstaVacio()&&
-        this.tablero[j + index][i + index].estaOcupado()&&
-        this.tablero[j + index][i + index].jugadorIgual(jugador) 
-      ){
+        j + index < this.cantFilas - 1 &&
+        i + index < this.cantFilas - 1 &&
+        this.tablero[j + index][i + index].noEstaVacio() &&
+        this.tablero[j + index][i + index].jugadorIgual(jugador)
+      ) {
         index++;
-        if (index == this.xEnLinea){
-        //  console.log('hay 4 en diagonal')
+        if (index == this.xEnLinea) {
           return true;
         }
       }
-     }
-    // console.log('no hay 4 en diagonal')
+    }
+    i = col + this.xEnLinea;
+    j = fil - this.xEnLinea;
 
-     i = col + this.xEnLinea;
-     j = fil - this.xEnLinea;
-
-     while (i > col && j < fil) {
+    while (i > col && j < fil) {
       i--;
       j++;
-    //  console.log('fil: '+ j + ' col: '+ i );
       let index = 0;
-    //  console.log('index:'+ index);
       while (
         i < this.cantFilas &&
         j >= 0 &&
         index < this.xEnLinea &&
-        j + index < this.cantFilas -1 &&
+        j + index < this.cantFilas - 1 &&
         i - index > 0 &&
-        this.tablero[j + index][i - index].estaOcupado()&&
-        this.tablero[j + index][i - index].jugadorIgual(jugador) 
-      ){
+        this.tablero[j + index][i - index].estaOcupado() &&
+        this.tablero[j + index][i - index].jugadorIgual(jugador)
+      ) {
         index++;
-        if (index == this.xEnLinea){
-        // console.log('hay 4 en anti-diagonal')
+        if (index == this.xEnLinea) {
           return true;
         }
       }
-     }
-
-
-     //console.log('false no hay 4 en anti-diagonal')
-     return false;
-     
-
-
+    }
+    return false;
   }
 
-
-  
-
-
-
   drawTablero() {
-    //this.clearCanvas();
     for (let x = 0; x < this.tablero.length; x++) {
       for (let y = 0; y < this.tablero[x].length; y++) {
-      //  console.log(this.tablero[x][y]);
         if (this.tablero[x][y].estaOcupado()) {
           this.tablero[x][y].draw();
         }
@@ -204,7 +169,6 @@ class Tablero {
     for (let x = 0; x < this.tablero.length; x++) {
       for (let y = 0; y < this.tablero.length; y++) {
         let casillero = new Casillero(x, y, canvas, ctx);
-        //casillero.draw();
         this.tablero[x][y] = casillero;
       }
     }

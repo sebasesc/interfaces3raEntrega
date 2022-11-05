@@ -36,7 +36,7 @@ class Casillero{
 
 
     draw(){
-        this.ctx.fillStyle = 'white';
+        this.ctx.fillStyle = '#eaeaea';
         
         this.ctx.beginPath();
         this.ctx.arc( (this.x * 100) + 50, (this.y * 100) + 50, 40, 0, 2* Math.PI);
