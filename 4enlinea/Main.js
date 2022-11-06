@@ -1,61 +1,60 @@
 "use strict";
-
 function xEnLinea() {
   let xEnLinea = parseInt(document.querySelector("#selectXenlinea").value);
   console.log(Math.pow(parseInt(xEnLinea + 4), 2));
   return xEnLinea;
 }
 
-let xLinea = parseInt(xEnLinea());
-let canvas = document.querySelector("#canvas");
-let ctx = canvas.getContext("2d");
 let img1 = document.getElementById("img1");
 let img2 = document.getElementById("img2");
+let canvas = document.querySelector("#canvas");
 
-let juego = new Juego(canvas, ctx, xLinea);
+let juego;
 
 function iniciarJuego() {
+
+let xLinea = parseInt(xEnLinea());
+
+let ctx = canvas.getContext("2d");
+  juego = new Juego(canvas, ctx, xLinea);  
   juego.crearTablero();
   juego.generarFichas();
   juego.drawFigure();
+ 
   temporizadorDeRetraso();
 }
 
-<<<<<<< HEAD
-function finalizarJuego() {
-  canvas.removeEventListener('mousedown', onMouseDown, false)
-  alert("finalizo el juego");
-  clearInterval(interval);
-}
-
-=======
-let xLinea = xEnLinea();
-console.log(xLinea);
-
-let juego = new Juego(canvas, ctx, canvasWidth, canvasHeight,7, xLinea, jugador1, jugador2);
-juego.crearTablero();
-juego.generarFichas(jugador1,img1)
-juego.generarFichas(jugador2,img2)
->>>>>>> d58cf58f5d2f7337f8c6a08e243ca298d04e7e33
-
-//capturar eventos
 function onMouseDown(e) {
-  let x = e.offsetX;
-  let y = e.offsetY;
-  juego.onMouseDown(x, y);
+let x = e.offsetX;
+let y = e.offsetY;
+juego.onMouseDown(x, y);
 }
 function onMouseUp(e) {
-  juego.onMouseUp();
+juego.onMouseUp();
 }
 
 function onMouseMove(e) {
-  let x = e.offsetX;
-  let y = e.offsetY;
-  juego.onMouseMove(x, y);
+let x = e.offsetX;
+let y = e.offsetY;
+if(juego != undefined){
+    juego.onMouseMove(x, y);
+}
+
 }
 canvas.addEventListener("mousedown", onMouseDown, false);
 canvas.addEventListener("mouseup", onMouseUp, false);
 canvas.addEventListener("mousemove", onMouseMove, false);
+
+
+function finalizarJuego() {
+  console.log("finalizo el juego");
+  borrarAlerta()
+  canvas.removeEventListener('mousedown', onMouseDown, false)
+
+}
+
+//capturar eventos
+
 
 let btnIniciar = document.querySelector("#btn-iniciar");
 btnIniciar.addEventListener("click", iniciarJuego);
@@ -79,8 +78,7 @@ function cargarSegundo() {
     segundos = 59;
   }
   if (segundos == 0 && minutos == 0) {
-    console.log("fin del juego");
-    borrarAlerta();
+    finalizarJuego()
   }
 
   //Mostrar Segundos en pantalla
