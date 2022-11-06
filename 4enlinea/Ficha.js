@@ -8,8 +8,8 @@ class Ficha{
         this.isResaltado = false;
         this.resaltadoEstilo = 'black';
         this.isMov = false;
-        this.cant = 0;
-        this.jugada = false;
+        this.cant = 0;//revisar, creo q al final no lo usamos
+        this.jugada = false;// valor que NO permite mover una ficha que ya fue ubicada en tablero
         this.img = img;
     }
 
@@ -73,6 +73,7 @@ class Ficha{
         return this.isMov;
     }
     mismoJugador(otroJugador){
+        //funcion retorna el resultado de comparar el jugador de mi ficha con otro pasado por paramtro
         return this.getJugador().getNombre() == otroJugador;
     }
 

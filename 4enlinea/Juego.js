@@ -19,7 +19,7 @@ class Juego {
   }
 
   generarFichas() {
-
+//agrega fichas dependiendo del tamaño del juego(xEnLinea) al jugador 1 y 2
     for (var i = 0; i < Math.pow(this.xEnLinea + 4, 2); i++) {
       this.addFicha(this.jugador1, img1);
     }
@@ -29,6 +29,7 @@ class Juego {
   }
 
   addFicha(jugador, img) {
+    //al inicar el juego, suelta las fichas en un rango del canvas para cada jugador
     let min = 0.85;
     let max = 0.90;
     if(jugador.getNombre() === 1){
@@ -47,6 +48,7 @@ class Juego {
   }
 
   drawFigure() {
+    //llamo a dibujar a cada una de las fichas del array
     this.clearCanvas();
     this.tablero.dibujarTablero();
     for (const ficha of this.fichas) {
@@ -57,6 +59,7 @@ class Juego {
   }
 
   clearCanvas() {
+    //dibujo el tablero en blanco
     this.ctx.fillStyle = "#FFFFFF";
     this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
     this.ctx.fillStyle = "blue";
@@ -64,6 +67,7 @@ class Juego {
   }
 
   onMouseMove(x, y) {
+  //arrastro ficha si cumple determinadas condiciones: sea clickeable, sea la ficha del jugador de turno, etc
     if (
       this.isMouseDown &&
       this.lastClicked != null &&
@@ -84,23 +88,25 @@ class Juego {
   }
 
   onMouseUp() {
+    //suelto ficha si cumplo con determinadas condiciones
     this.isMouseDown = false;
     if (this.lastClicked != null && !this.lastClicked.fueJugada()) {
-      this.lastClicked.setResaltado(false);
-      let posX = Math.round((this.lastClicked.getPosX() - 50) / 100);
-      if (posX < this.xEnLinea + 4) {
-        this.tablero.addFicha(posX, this.lastClicked);
+      this.lastClicked.setResaltado(false);//si tenia clickeada una ficha que no habia sido jugada, la desmarco
+      let posX = Math.round((this.lastClicked.getPosX() - 50) / 100);//y le asigno la nueva posicion (sea o no en el tablero)
+      if (posX < this.xEnLinea + 4) {//pregunto si cayo en el tablero
+        this.tablero.addFicha(posX, this.lastClicked);//la agrego en el tablero
         this.drawFigure();
-        if (this.tablero.chequearGanador(this.lastClicked)) {
+        if (this.tablero.chequearGanador(this.lastClicked)) {//checqueo si con la ultima ficha que solte hay un ganador
           alert("ganó" + this.lastClicked.getJugador().getNombre());
         }
-        this.jugador1.setTurno(this.jugador2.esSuTurno());
+        this.jugador1.setTurno(this.jugador2.esSuTurno());//cambio de turno
         this.jugador2.setTurno(!this.jugador1.esSuTurno());
       }
     }
   }
 
   onMouseDown(x, y) {
+    //funcion que al hacer click checkea si lo hice sobre una ficha y la resalta
     this.isMouseDown = true;
     if (this.lastClicked != null) {
       this.lastClicked.setResaltado(false);
@@ -116,6 +122,7 @@ class Juego {
   }
 
   findClickedFigure(x, y) {
+    // busca si las coordenadas pertenecen a alguna ficha del array
     for (const ficha of this.fichas) {
       if (ficha !== null && ficha.isPointInside(x, y)) {
         return ficha;

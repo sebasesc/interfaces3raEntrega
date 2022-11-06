@@ -1,6 +1,6 @@
 class Tablero {
   constructor(xEnLinea) {
-    this.xEnLinea = xEnLinea; // pasar por constructor
+    this.xEnLinea = xEnLinea; // pasa por constructor
     this.cantFilas = xEnLinea + 4;
     this.tablero = new Array(xEnLinea + 4);
   }

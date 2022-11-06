@@ -8,22 +8,21 @@ function xEnLinea() {
 let img1 = document.getElementById("img1");
 let img2 = document.getElementById("img2");
 let canvas = document.querySelector("#canvas");
-
 let juego;
 
 function iniciarJuego() {
 
-let xLinea = parseInt(xEnLinea());
+let xLinea = parseInt(xEnLinea());//traemos el valor XenLinea que define las reglas del juego, X puede ser 4, 5 o 6
 
-let ctx = canvas.getContext("2d");
-  juego = new Juego(canvas, ctx, xLinea);  
+let ctx = canvas.getContext("2d");//definimos el contexto
+  juego = new Juego(canvas, ctx, xLinea); //instanciamos el objeto juego 
   juego.crearTablero();
   juego.generarFichas();
   juego.drawFigure();
  
   temporizadorDeRetraso();
 }
-
+// definimos las coordenadas(x, y) de los eventos, para pasarlas como parametro a Juego
 function onMouseDown(e) {
 let x = e.offsetX;
 let y = e.offsetY;
@@ -47,13 +46,12 @@ canvas.addEventListener("mousemove", onMouseMove, false);
 
 
 function finalizarJuego() {
+  // al acabar el juego, se muestra un alerta y se dejan de recibir los eventos del mouse
   console.log("finalizo el juego");
   borrarAlerta()
   canvas.removeEventListener('mousedown', onMouseDown, false)
 
 }
-
-//capturar eventos
 
 
 let btnIniciar = document.querySelector("#btn-iniciar");
@@ -67,10 +65,12 @@ function reiniciarJuego() {
 }
 
 
+// funciones para el cronometro
 
-//Definimos y ejecutamos los segundos
 let minutos = 5;
 let segundos = 0;
+
+//Definimos y ejecutamos los segundos
 function cargarSegundo() {
   let txtSegundos;
 
